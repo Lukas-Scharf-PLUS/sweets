@@ -192,13 +192,17 @@ class TestLegacyDoTropo:
 class TestNestedOverrides:
     """Nested pydantic sub-configs round-trip through instantiation."""
 
-    def test_custom_dolphin_half_window(self, safe_kwargs):
+    def test_custom_dolphin_native_options(self, safe_kwargs):
         cfg = ConfigCli(
             **safe_kwargs,
-            dolphin=DolphinOptions(half_window=(20, 10), unwrap_method="spurt"),
+            dolphin=DolphinOptions(
+                phase_linking={"half_window": {"y": 20, "x": 10}},
+                unwrap_options={"unwrap_method": "spurt"},
+            ),
         )
-        assert cfg.dolphin.half_window == (20, 10)
-        assert cfg.dolphin.unwrap_method == "spurt"
+        assert cfg.dolphin.phase_linking.half_window.y == 20
+        assert cfg.dolphin.phase_linking.half_window.x == 10
+        assert cfg.dolphin.unwrap_options.unwrap_method.value == "spurt"
 
     def test_slc_posting_override(self, safe_kwargs):
         cfg = ConfigCli(**safe_kwargs, slc_posting=(10, 2.5))
@@ -213,7 +217,13 @@ class TestExecuteRoundTrip:
         cfg = ConfigCli(
             **safe_kwargs,
             slc_posting=(10, 2.5),
-            dolphin=DolphinOptions(half_window=(20, 10), unwrap_method="spurt"),
+            dolphin=DolphinOptions(
+                phase_linking={
+                    "half_window": {"y": 20, "x": 10},
+                    "beta": 0.01,
+                },
+                unwrap_options={"unwrap_method": "spurt"},
+            ),
             tropo=TropoOptions(enabled=True),
             output=output,
             with_schema=False,
@@ -222,8 +232,14 @@ class TestExecuteRoundTrip:
 
         reloaded = Workflow.from_yaml(output)
         assert reloaded.slc_posting == (10, 2.5)
-        assert reloaded.dolphin.half_window == (20, 10)
-        assert reloaded.dolphin.unwrap_method == "spurt"
+        assert reloaded.dolphin.phase_linking.half_window.y == 20
+        assert reloaded.dolphin.phase_linking.half_window.x == 10
+        assert reloaded.dolphin.unwrap_options.unwrap_method.value == "spurt"
+        assert reloaded.dolphin.phase_linking.beta == 0.01
+        raw = yaml.safe_load(output.read_text())
+        assert raw["dolphin"]["phase_linking"]["beta"] == 0.01
+        assert "workflow_options" not in raw["dolphin"]
+        assert "beta: 0.01" in output.read_text()
         assert reloaded.tropo.enabled is True
         assert reloaded.search.kind == "safe"
         assert reloaded.search.track == 78
@@ -320,11 +336,20 @@ class TestTyroIntegration:
             "--slc-posting",
             "10",
             "2.5",
-            "--dolphin.half-window",
+            "--dolphin.phase-linking.half-window.y",
             "20",
+            "--dolphin.phase-linking.half-window.x",
             "10",
-            "--dolphin.unwrap-method",
-            "spurt",
+            "--dolphin.unwrap-options.unwrap-method",
+            "WHIRLWIND",
+            "--dolphin.unwrap-options.whirlwind-options."
+            "goldstein-alpha",
+            "0.4",
+            "--dolphin.unwrap-options.whirlwind-options."
+            "connect-gaps",
+            "--dolphin.unwrap-options.spurt-options."
+            "solver-settings.t-worker-count",
+            "3",
             "--tropo.enabled",
             "--work-dir",
             str(tmp_path),
@@ -336,8 +361,13 @@ class TestTyroIntegration:
         ]
         cfg = tyro.cli(ConfigCli, args=args)
         assert cfg.slc_posting == (10, 2.5)
-        assert cfg.dolphin.half_window == (20, 10)
-        assert cfg.dolphin.unwrap_method == "spurt"
+        assert cfg.dolphin.phase_linking.half_window.y == 20
+        assert cfg.dolphin.phase_linking.half_window.x == 10
+        unwrap_options = cfg.dolphin.unwrap_options
+        assert unwrap_options.unwrap_method.value == "whirlwind"
+        assert unwrap_options.whirlwind_options.goldstein_alpha == 0.4
+        assert unwrap_options.whirlwind_options.connect_gaps is True
+        assert unwrap_options.spurt_options.solver_settings.t_worker_count == 3
         assert cfg.tropo.enabled is True
         search = cfg.search
         assert isinstance(search, OperaCslcSearch)
@@ -346,7 +376,7 @@ class TestTyroIntegration:
         cfg.execute()
         assert output.exists()
         reloaded = Workflow.from_yaml(output)
-        assert reloaded.dolphin.unwrap_method == "spurt"
+        assert reloaded.dolphin.unwrap_options.unwrap_method.value == "whirlwind"
 
     def test_search_field_suppressed_from_help(self, capsys):
         """`tyro.conf.Suppress` should keep `--search` out of the help text."""
@@ -358,5 +388,8 @@ class TestTyroIntegration:
         # choices and break the flat-flag UX.
         assert "--search" not in out
         # Nested groups should still be present.
-        assert "--dolphin.half-window" in out
+        assert "--dolphin.phase-linking.half-window.y" in out
+        assert "dolphin.unwrap-options.whirlwind-options" in out
+        assert "dolphin.unwrap-options.spurt-options options" in out
+        assert "workflow-options" not in out
         assert "--tropo.enabled" in out

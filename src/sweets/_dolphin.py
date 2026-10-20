@@ -19,11 +19,19 @@ above here.
 
 from __future__ import annotations
 
+from copy import copy
 from math import cos, floor, log2, radians
 from pathlib import Path
-from typing import TYPE_CHECKING, Literal, Optional
+from typing import TYPE_CHECKING, Any, Optional
 
-from pydantic import BaseModel, Field
+from dolphin.workflows.config import DisplacementWorkflow
+from pydantic import (
+    BaseModel,
+    ConfigDict,
+    Field,
+    create_model,
+    model_validator,
+)
 
 from loguru import logger
 
@@ -33,7 +41,160 @@ if TYPE_CHECKING:
     from dolphin.workflows.displacement import OutputPaths
 
 
-UnwrapMethod = Literal["snaphu", "spurt", "whirlwind"]
+class _DolphinConfigSection(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+
+class _DolphinOptionsBase(_DolphinConfigSection):
+    @model_validator(mode="before")
+    @classmethod
+    def _migrate_legacy_options(cls, value: Any) -> Any:
+        if not isinstance(value, dict):
+            return value
+        value = dict(value)
+        for key, option in value.items():
+            if isinstance(option, BaseModel):
+                value[key] = option.model_dump(mode="python")
+
+        legacy_fields = {
+            "half_window": ("phase_linking", "half_window"),
+            "strides": ("output_options", "strides"),
+            "ministack_size": ("phase_linking", "ministack_size"),
+            "use_evd": ("phase_linking", "use_evd"),
+            "max_bandwidth": ("interferogram_network", "max_bandwidth"),
+            "unwrap_method": ("unwrap_options", "unwrap_method"),
+            "n_parallel_unwrap": ("unwrap_options", "n_parallel_jobs"),
+            "snaphu_ntiles": ("unwrap_options", "snaphu_options", "ntiles"),
+            "snaphu_parallel_tiles": (
+                "unwrap_options",
+                "snaphu_options",
+                "n_parallel_tiles",
+            ),
+            "snaphu_tile_overlap": (
+                "unwrap_options",
+                "snaphu_options",
+                "tile_overlap",
+            ),
+            "snaphu_cost": ("unwrap_options", "snaphu_options", "cost"),
+            "gpu_enabled": ("worker_settings", "gpu_enabled"),
+            "n_parallel_bursts": ("worker_settings", "n_parallel_bursts"),
+            "block_shape": ("worker_settings", "block_shape"),
+        }
+        legacy_values = {
+            key: value.pop(key) for key in tuple(legacy_fields) if key in value
+        }
+        run_timeseries = value.pop("run_timeseries", None)
+        value.pop("nearest_n_coherence", None)
+
+        legacy_workflow_options = value.pop("workflow_options", {})
+        if not isinstance(legacy_workflow_options, dict):
+            msg = "Legacy dolphin.workflow_options must be a mapping."
+            raise ValueError(msg)
+        protected_fields = {"cslc_file_list", "work_directory", "mask_file"}
+        conflicting_fields = protected_fields.intersection(legacy_workflow_options)
+        if conflicting_fields:
+            fields = ", ".join(sorted(conflicting_fields))
+            msg = f"workflow_options cannot override Sweets-managed fields: {fields}"
+            raise ValueError(msg)
+
+        for key, legacy_value in legacy_values.items():
+            path = legacy_fields[key]
+            if key == "snaphu_ntiles" and legacy_value == "auto":
+                continue
+            if key in {"half_window", "strides"}:
+                legacy_value = {"y": legacy_value[0], "x": legacy_value[1]}
+            elif key in {"snaphu_ntiles", "snaphu_tile_overlap", "block_shape"}:
+                legacy_value = tuple(legacy_value)
+            _set_nested_option(value, path, legacy_value)
+
+        if run_timeseries is not None:
+            _set_nested_option(
+                value, ("timeseries_options", "run_inversion"), run_timeseries
+            )
+            _set_nested_option(
+                value, ("timeseries_options", "run_velocity"), run_timeseries
+            )
+
+        _merge_nested_config(value, legacy_workflow_options)
+        return value
+
+
+_SWEETS_DEFAULTS: dict[tuple[str, ...], Any] = {
+    ("worker_settings", "gpu_enabled"): True,
+    ("worker_settings", "threads_per_worker"): 2,
+    ("worker_settings", "block_shape"): (256, 256),
+    ("phase_linking", "max_num_compressed"): 5,
+    ("phase_linking", "output_reference_idx"): 0,
+    ("interferogram_network", "max_bandwidth"): 3,
+    ("unwrap_options", "n_parallel_jobs"): 2,
+    ("unwrap_options", "snaphu_options", "ntiles"): None,
+    ("unwrap_options", "snaphu_options", "tile_overlap"): (400, 400),
+    ("unwrap_options", "snaphu_options", "single_tile_reoptimize"): True,
+    ("timeseries_options", "apply_mask_to_timeseries"): True,
+    ("output_options", "strides", "y"): 3,
+    ("output_options", "strides", "x"): 6,
+}
+
+
+def _create_dolphin_config_model(
+    model: type[BaseModel],
+    name: str,
+    *,
+    excluded_fields: frozenset[str] = frozenset(),
+    path: tuple[str, ...] = (),
+    root_model: bool = False,
+) -> type[BaseModel]:
+    """Mirror a Dolphin model while applying Sweets' workflow defaults."""
+    fields: dict[str, tuple[Any, Any]] = {}
+    for field_name, field_info in model.model_fields.items():
+        if field_name in excluded_fields:
+            continue
+
+        annotation = field_info.annotation
+        copied_field = copy(field_info)
+        if isinstance(annotation, type) and issubclass(annotation, BaseModel):
+            nested_model = _create_dolphin_config_model(
+                annotation,
+                f"{name}_{field_name}",
+                path=(*path, field_name),
+            )
+            copied_field.default_factory = nested_model
+            fields[field_name] = (nested_model, copied_field)
+        else:
+            default_path = (*path, field_name)
+            if default_path in _SWEETS_DEFAULTS:
+                copied_field.default = _SWEETS_DEFAULTS[default_path]
+                copied_field.default_factory = None
+            if default_path == ("unwrap_options", "snaphu_options", "ntiles"):
+                annotation = Optional[annotation]
+            fields[field_name] = (annotation, copied_field)
+
+    base_model = _DolphinOptionsBase if root_model else _DolphinConfigSection
+    return create_model(name, __base__=base_model, **fields)
+
+
+_DolphinOptions = _create_dolphin_config_model(
+    DisplacementWorkflow,
+    "DolphinOptions",
+    excluded_fields=frozenset({"cslc_file_list", "work_directory", "mask_file"}),
+    root_model=True,
+)
+
+
+def _merge_nested_config(config: dict[str, Any], overrides: dict[str, Any]) -> None:
+    for key, value in overrides.items():
+        current = config.get(key)
+        if isinstance(current, dict) and isinstance(value, dict):
+            _merge_nested_config(current, value)
+        else:
+            config[key] = value
+
+
+def _set_nested_option(config: dict[str, Any], path: tuple[str, ...], value: Any) -> None:
+    current = config
+    for key in path[:-1]:
+        current = current.setdefault(key, {})
+    current[path[-1]] = value
 
 
 def _estimate_snaphu_tiles_from_bounds(
@@ -52,97 +213,7 @@ def _estimate_snaphu_tiles_from_bounds(
     return (tile_count, tile_count)
 
 
-class DolphinOptions(BaseModel):
-    """Sweets-friendly configuration for the dolphin displacement workflow.
-
-    These map straight onto fields of
-    :class:`dolphin.workflows.config.DisplacementWorkflow`. Anything not
-    exposed here can still be set after the fact by mutating the returned
-    config object before :meth:`run`.
-    """
-
-    half_window: tuple[int, int] = Field(
-        default=(7, 14),
-        description=(
-            "Half-window (y, x) for phase linking. The default of (7, 14) gives"
-            " roughly square windows for the OPERA 10x5 m geocoded posting"
-            " (y-spacing 10 m, x-spacing 5 m)."
-        ),
-    )
-    strides: tuple[int, int] = Field(
-        default=(3, 6),
-        description=(
-            "Output strides (y, x). With OPERA 10x5 m posting and the default"
-            " (3, 6), outputs end up at 30 x 30 m."
-        ),
-    )
-    ministack_size: int = Field(
-        default=15,
-        ge=2,
-        description="Number of SLCs per ministack for the sequential estimator.",
-    )
-    use_evd: bool = Field(
-        default=False,
-        description="Use EVD instead of EMI for phase linking.",
-    )
-    max_bandwidth: int = Field(
-        default=3,
-        ge=1,
-        description="Form nearest-N interferograms (by index) for the network.",
-    )
-    nearest_n_coherence: int = Field(
-        default=1,
-        ge=1,
-        description="Save N nearest-neighbor multilooked coherence rasters.",
-    )
-    unwrap_method: UnwrapMethod = Field(
-        default="snaphu",
-        description="Unwrapping algorithm to invoke through dolphin.",
-    )
-    n_parallel_unwrap: int = Field(
-        default=2,
-        ge=1,
-        description="Parallel unwrapping jobs (interferograms in flight).",
-    )
-    snaphu_ntiles: tuple[int, int] | Literal["auto"] = Field(
-        default="auto",
-        description="SNAPHU tile grid (rows, cols). 'auto' lets dolphin decide based on image size.",
-    )
-    snaphu_parallel_tiles: int = Field(
-        default=4,
-        ge=1,
-        description="Number of SNAPHU tiles to process in parallel (for each of `n_parallel_unwrap` jobs).",
-    )
-    snaphu_tile_overlap: tuple[int, int] = Field(
-        default=(400, 400),
-        description="SNAPHU tile overlap (rows, cols).",
-    )
-    snaphu_cost: Literal["defo", "smooth"] = Field(
-        default="smooth",
-        description="SNAPHU statistical cost mode.",
-    )
-    run_timeseries: bool = Field(
-        default=True,
-        description="Run dolphin's timeseries inversion + velocity estimation.",
-    )
-    gpu_enabled: bool = Field(
-        default=True,
-        description=(
-            "Enable GPU acceleration if dolphin can find a usable device."
-            " Harmless on machines without a GPU — dolphin falls back to CPU."
-        ),
-    )
-    n_parallel_bursts: int = Field(
-        default=1,
-        ge=1,
-        description=(
-            "Number of parallel burst stacks (S1) or blocks (NISAR) to process during phase linking."
-        ),
-    )
-    block_shape: tuple[int, int] = Field(
-        default=(256, 256),
-        description="Block shape (rows, cols) used during phase linking.",
-    )
+DolphinOptions = _DolphinOptions
 
 
 def build_displacement_config(
@@ -182,83 +253,43 @@ def build_displacement_config(
         Configured workflow ready to be passed to :func:`run_displacement`.
 
     """
-    from dolphin.workflows.config import DisplacementWorkflow
-
     if options is None:
         options = DolphinOptions()
 
     work_directory = Path(work_directory).resolve()
     work_directory.mkdir(parents=True, exist_ok=True)
 
-    if options.snaphu_ntiles == "auto":
-        snaphu_tiles = (
-            (1, 1)
-            if bounds is None
-            else _estimate_snaphu_tiles_from_bounds(bounds, options.strides)
-        )
-    else:
-        snaphu_tiles = options.snaphu_ntiles
+    config = options.model_dump(mode="python")
+    input_options = config["input_options"]
+    if input_options["subdataset"] is None:
+        input_options["subdataset"] = subdataset
+    if input_options["wavelength"] is None and wavelength is not None:
+        input_options["wavelength"] = wavelength
 
-    unwrap_options: dict = {
-        "unwrap_method": options.unwrap_method,
-        "n_parallel_jobs": options.n_parallel_unwrap,
-    }
-    if options.unwrap_method == "snaphu":
-        unwrap_options["snaphu_options"] = {
-            "ntiles": list(snaphu_tiles),
-            "tile_overlap": list(options.snaphu_tile_overlap),
-            "cost": options.snaphu_cost,
-            "single_tile_reoptimize": True,  # always better
-        }
-
-    output_options: dict = {
-        "strides": {"y": options.strides[0], "x": options.strides[1]},
-    }
-    if bounds is not None:
+    output_options = config["output_options"]
+    if output_options["bounds"] is None and bounds is not None:
         output_options["bounds"] = list(bounds)
         output_options["bounds_epsg"] = 4326
 
-    input_options: dict = {"subdataset": subdataset}
-    if wavelength is not None:
-        input_options["wavelength"] = wavelength
+    snaphu_options = config["unwrap_options"]["snaphu_options"]
+    if snaphu_options["ntiles"] is None:
+        strides = config["output_options"]["strides"]
+        snaphu_options["ntiles"] = (
+            (1, 1)
+            if bounds is None
+            else _estimate_snaphu_tiles_from_bounds(
+                bounds, (strides["y"], strides["x"])
+            )
+        )
 
-    # Use model_validate so the nested dolphin sub-models accept dicts
-    # rather than requiring us to import each one explicitly here.
-    cfg = DisplacementWorkflow.model_validate(
+    config.update(
         {
-            "cslc_file_list": [Path(p).resolve() for p in cslc_files],
+            "cslc_file_list": [Path(path).resolve() for path in cslc_files],
             "work_directory": work_directory,
             "mask_file": mask_file,
-            "input_options": input_options,
-            "worker_settings": {
-                "gpu_enabled": options.gpu_enabled,
-                "threads_per_worker": 2,
-                "n_parallel_bursts": options.n_parallel_bursts,
-                "block_shape": list(options.block_shape),
-            },
-            "phase_linking": {
-                "ministack_size": options.ministack_size,
-                "half_window": {
-                    "y": options.half_window[0],
-                    "x": options.half_window[1],
-                },
-                "use_evd": options.use_evd,
-                "output_reference_idx": 0,
-                "max_num_compressed": 5,
-            },
-            "interferogram_network": {
-                "max_bandwidth": options.max_bandwidth,
-            },
-            "unwrap_options": unwrap_options,
-            "timeseries_options": {
-                "run_inversion": options.run_timeseries,
-                "run_velocity": options.run_timeseries,
-                "apply_mask_to_timeseries": True,  # more commonly requested
-            },
-            "output_options": output_options,
         }
     )
-    return cfg
+    return DisplacementWorkflow.model_validate(config)
 
 
 @log_runtime

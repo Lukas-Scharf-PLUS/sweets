@@ -632,7 +632,10 @@ class Workflow(YamlModel):
             geom_path_list=[Path(p) for p in static_files],
             geom_dir=self.geom_dir,
             dem_filename=self.dem_filename,
-            looks=self.dolphin.strides,
+            looks=(
+                self.dolphin.output_options.strides.y,
+                self.dolphin.output_options.strides.x,
+            ),
             bbox=bbox,
             overwrite=self.overwrite,
         )

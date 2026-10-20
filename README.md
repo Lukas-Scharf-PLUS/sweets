@@ -132,6 +132,39 @@ sweets run config.yaml --starting-step 2  # skip download, run geocode + dolphin
 sweets run config.yaml --starting-step 3  # just (re-)run dolphin
 ```
 
+### Dolphin configuration options
+
+Sweets uses Dolphin's native workflow section names directly under `dolphin`.
+The same options from `pixi run dolphin config --help` are available, including
+options for SNAPHU, SPURT, Whirlwind, and other unwrap backends. Sweets
+continues to supply the input CSLCs, mask, and work directory itself.
+
+For example, choose Whirlwind and adjust its Goldstein filter in a
+`sweets_config.yaml`:
+
+```yaml
+dolphin:
+  unwrap_options:
+    unwrap_method: whirlwind
+    whirlwind_options:
+      goldstein_alpha: 0.4
+      connect_gaps: true
+```
+
+The same settings can be passed when generating a config with the CLI:
+
+```bash
+sweets config \
+  ... \
+  --dolphin.unwrap-options.unwrap-method WHIRLWIND \
+  --dolphin.unwrap-options.whirlwind-options.goldstein-alpha 0.4 \
+  --dolphin.unwrap-options.whirlwind-options.connect-gaps
+```
+
+Use `sweets config --help` for the Sweets-prefixed flags, or
+`pixi run dolphin config --help` for Dolphin's native option names and
+descriptions.
+
 ### Configuration from Python
 
 You can also build a `Workflow` directly:

@@ -40,7 +40,7 @@ dynamic = ["version"]
 dependencies = [
   "asf_search",
   "burst2safe",
-  "dolphin",
+  "dolphin>=0.42.8",
   "h5py",
   "loguru",
   "numpy",
@@ -89,8 +89,18 @@ sweets = "sweets.cli:main"
 channels = ["conda-forge"]
 platforms = ["osx-arm64", "linux-64"]
 
+[tool.pixi.activation.env]
+BURST2SAFE_MAX_CONCURRENT = "6"
+
+[tool.pixi.pypi-options.dependency-overrides]
+# This fork commit contains upstream opera-utils 0.25.9 plus Sweets' tropo
+# helpers, but its SCM-derived version is 0.25.8.post1.dev50.
+opera-utils = { git = "https://github.com/scottstanie/opera-utils.git", rev = "97e3f15898cb0591de0d3f2ec296ac8760a53d16" }
+aiohttp = ">=3.12.6,<3.13"
+
 [tool.pixi.pypi-dependencies]
 sweets = { path = ".", editable = true }
+burst2safe = { git = "https://github.com/scottstanie/burst2safe.git", rev = "d45c4cf3b59815f7dbd130749318b5c561e43908" }
 # Use the recently-updated forks. Upstream isce-framework/s1-reader has a numpy 2
 # incompat (polyfit scalar regression, see sweets#132); upstream
 # opera-adt/COMPASS still uses np.string_ / np.unicode_ which were removed
@@ -111,17 +121,12 @@ compass = { git = "https://github.com/scottstanie/COMPASS.git", branch = "develo
 # up conda's PROJ_DATA dir, which doesn't match the wheel's bundled
 # PROJ layout. Listing only the extras sweets actually needs keeps
 # geopandas/pyogrio on the conda-forge side.
-opera-utils = { git = "https://github.com/scottstanie/opera-utils.git", branch = "develop-scott", extras = [
+opera-utils = { git = "https://github.com/scottstanie/opera-utils.git", rev = "97e3f15898cb0591de0d3f2ec296ac8760a53d16", extras = [
   "asf",
   "disp",
   "nisar",
   "tropo",
 ] }
-# scottstanie/dolphin@develop-scott carries the YamlModel commented-yaml
-# fix for Union-of-submodels JSON schema, which unblocks the
-# `Workflow.search: BurstSearch | OperaCslcSearch | NisarGslcSearch`
-# discriminated union.
-dolphin = { git = "https://github.com/scottstanie/dolphin.git", branch = "develop-scott" }
 # scottstanie/spurt@develop-scott is significantly ahead of upstream
 # isce-framework/spurt for temporal phase unwrapping - performance
 # fixes, macOS multiprocessing memory fix, richer logging, reader-
@@ -130,6 +135,8 @@ dolphin = { git = "https://github.com/scottstanie/dolphin.git", branch = "develo
 # `dolphin.unwrap_method: spurt` in their sweets config onto the
 # supported version.
 spurt = { git = "https://github.com/scottstanie/spurt.git", branch = "develop-scott" }
+# Dolphin's optional Whirlwind backend is a native C++ extension from source.
+whirlwind = { git = "https://github.com/isce-framework/whirlwind.git", rev = "dce837b521464f29e1654a0a500b44926f7d92bc" }
 
 [tool.pixi.dependencies]
 python = ">=3.11"
@@ -143,12 +150,11 @@ pip = ">=21.3"
 # existing environment folds the `cpu` feature in by default.
 gdal = "*"
 libgdal-netcdf = "*"
+cmake = ">=3.25,<3.30"
 # Pure-python deps mirrored from [project.dependencies] so the env solves
 # fully through conda when possible. (dolphin is intentionally NOT here -
-# it comes from scottstanie/dolphin@develop-scott via the pypi-dependencies
-# block above.)
+# it is installed from PyPI at the version declared in project.dependencies.)
 asf_search = "*"
-burst2safe = "*"
 h5py = ">=3.6"
 loguru = "*"
 numpy = ">=1.25"

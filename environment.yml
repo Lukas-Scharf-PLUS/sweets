@@ -2,18 +2,20 @@ name: default
 channels:
 - conda-forge
 - nodefaults
+variables:
+  BURST2SAFE_MAX_CONCURRENT: "6"
 dependencies:
 - cartopy *
 - matplotlib *
 - colorcet *
 - isce3 >=0.24
-- dolphin
+- dolphin >=0.42.8
 - python >=3.11
 - pip >=21.3
 - gdal *
 - libgdal-netcdf *
+- cmake >=3.25,<3.30
 - asf_search *
-- burst2safe *
 - h5py >=3.6
 - loguru *
 - numpy >=1.25
@@ -41,8 +43,9 @@ dependencies:
 - pip
 - pip:
   - -e .
+  - burst2safe @ git+https://github.com/scottstanie/burst2safe.git@d45c4cf3b59815f7dbd130749318b5c561e43908
   - s1reader @ git+https://github.com/scottstanie/s1-reader.git@develop-scott
   - compass @ git+https://github.com/scottstanie/COMPASS.git@develop-scott
   - opera-utils[all] @ git+https://github.com/scottstanie/opera-utils.git@develop-scott
-  - dolphin @ git+https://github.com/scottstanie/dolphin.git@develop-scott
   - spurt @ git+https://github.com/scottstanie/spurt.git@develop-scott
+  - whirlwind @ git+https://github.com/isce-framework/whirlwind.git@dce837b521464f29e1654a0a500b44926f7d92bc
