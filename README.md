@@ -37,6 +37,20 @@ pixi shell
 That drops you into an env where `sweets`, `dolphin` and `compass` are all on
 the `PATH` and sweets is installed in editable mode.
 
+Conda/mamba is also supported using the included environment file:
+
+```bash
+SETUPTOOLS_SCM_PRETEND_VERSION_FOR_OPERA_UTILS=0.25.9 conda env create -f environment.yml
+conda activate sweets_fork
+sweets --help
+```
+
+The Conda environment targets Python 3.12 and CPU builds of `isce3` and
+`jaxlib` for consistent solves across machines. The version override is
+needed because the pinned Sweets-compatible `opera-utils` fork reports a
+development version below the minimum declared by Dolphin 0.42.8. Use Pixi's
+`gpu` environment if you need the CUDA-enabled `isce3` build.
+
 **GPU mode (Linux + CUDA 12+ only).** There's a `gpu` pixi environment that
 swaps the CPU `isce3` build for `isce3-cuda`, which accelerates COMPASS
 geocoding, cross-multiplication and resampling on the GPU. dolphin itself
@@ -86,6 +100,26 @@ sweets config \
 sweets run pecos_demo/sweets_config.yaml
 ```
 
+Example config for Vienna:
+```bash
+sweets config \
+  --start 2023-01-01 \
+  --end 2023-12-31 \
+  --track 73 \
+  --bbox \
+    16.18099875016676 48.11744311620298 \
+    16.587587299348154 48.324307364563005 \
+  --work-dir ./ \
+  --out-dir ./downloads \
+  --output ./sweets_config.yaml \
+  --n-workers 2 \
+  --threads-per-worker 4 \
+  --dolphin.worker-settings.block-shape 128 128 \
+  --dolphin.output-options.strides.y 2 \
+  --dolphin.output-options.strides.x 4 \
+  --dolphin.unwrap-options.unwrap-method WHIRLWIND
+```
+
 Pre-made OPERA CSLCs (faster for CONUS, no COMPASS needed):
 
 ```bash
@@ -122,10 +156,17 @@ sweets config \
 sweets run salinas_nisar/nisar.yaml
 ```
 
+```bash
+sweets run sweets_config.yaml 2>&1 | tee sweets_run.log
+```
+
 ### Starting at a later step
 
 `sweets run` accepts `--starting-step N` so you can skip earlier stages if the
 outputs are already on disk:
+
+
+
 
 ```bash
 sweets run config.yaml --starting-step 2  # skip download, run geocode + dolphin

@@ -32,6 +32,7 @@ from pydantic import (
     create_model,
     model_validator,
 )
+from pydantic_core import PydanticUndefined
 
 from loguru import logger
 
@@ -158,6 +159,7 @@ def _create_dolphin_config_model(
                 f"{name}_{field_name}",
                 path=(*path, field_name),
             )
+            copied_field.default = PydanticUndefined
             copied_field.default_factory = nested_model
             fields[field_name] = (nested_model, copied_field)
         else:

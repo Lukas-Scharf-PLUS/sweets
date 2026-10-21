@@ -135,8 +135,8 @@ opera-utils = { git = "https://github.com/scottstanie/opera-utils.git", rev = "9
 # `dolphin.unwrap_method: spurt` in their sweets config onto the
 # supported version.
 spurt = { git = "https://github.com/scottstanie/spurt.git", branch = "develop-scott" }
-# Dolphin's optional Whirlwind backend is a native C++ extension from source.
-whirlwind = { git = "https://github.com/isce-framework/whirlwind.git", rev = "dce837b521464f29e1654a0a500b44926f7d92bc" }
+# Dolphin's optional Whirlwind backend is distributed as whirlwind-insar on PyPI.
+whirlwind-insar = "==0.10.0"
 
 [tool.pixi.dependencies]
 python = ">=3.11"

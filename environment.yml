@@ -1,4 +1,4 @@
-name: default
+name: sweets_fork
 channels:
 - conda-forge
 - nodefaults
@@ -8,9 +8,8 @@ dependencies:
 - cartopy *
 - matplotlib *
 - colorcet *
-- isce3 >=0.24
-- dolphin >=0.42.8
-- python >=3.11
+- isce3 >=0.24 *_cpu
+- python 3.12.*
 - pip >=21.3
 - gdal *
 - libgdal-netcdf *
@@ -32,20 +31,21 @@ dependencies:
 - shapely >=2.0
 - tyro *
 - scikit-image *
-- sardem
-- sentineleof
 - pillow *
 - pysolid *
 - ruamel.yaml *
 - yamale *
 - lxml *
 - scipy *
+- geopandas *
+- pyogrio *
 - pip
 - pip:
   - -e .
   - burst2safe @ git+https://github.com/scottstanie/burst2safe.git@d45c4cf3b59815f7dbd130749318b5c561e43908
   - s1reader @ git+https://github.com/scottstanie/s1-reader.git@develop-scott
   - compass @ git+https://github.com/scottstanie/COMPASS.git@develop-scott
-  - opera-utils[all] @ git+https://github.com/scottstanie/opera-utils.git@develop-scott
+  - opera-utils[asf,disp,nisar,tropo] @ git+https://github.com/scottstanie/opera-utils.git@97e3f15898cb0591de0d3f2ec296ac8760a53d16
   - spurt @ git+https://github.com/scottstanie/spurt.git@develop-scott
-  - whirlwind @ git+https://github.com/isce-framework/whirlwind.git@dce837b521464f29e1654a0a500b44926f7d92bc
+  - whirlwind-insar==0.10.0
+  - aiohttp >=3.12.6,<3.13
