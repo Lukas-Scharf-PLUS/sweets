@@ -103,7 +103,7 @@ sweets run pecos_demo/sweets_config.yaml
 Example config for Vienna:
 ```bash
 sweets config \
-  --start 2023-01-01 \
+  --start 2022-01-01 \
   --end 2024-12-31 \
   --track 73 \
   --bbox \
@@ -114,9 +114,9 @@ sweets config \
   --output ./sweets_config.yaml \
   --n-workers 2 \
   --threads-per-worker 4 \
-  --dolphin.worker-settings.block-shape 64 64 \
-  --dolphin.output-options.strides.y 1 \
-  --dolphin.output-options.strides.x 1 \
+  --dolphin.worker-settings.block-shape 128 128 \
+  --dolphin.output-options.strides.y 3 \
+  --dolphin.output-options.strides.x 6 \
   --dolphin.unwrap-options.unwrap-method WHIRLWIND
 ```
 
