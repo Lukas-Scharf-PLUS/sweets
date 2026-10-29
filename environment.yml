@@ -39,6 +39,15 @@ dependencies:
 - scipy *
 - geopandas *
 - pyogrio *
+- cartopy *
+- matplotlib *
+- ipywidgets *
+- colorcet *
+- pytest >=8.3.5,<9
+- pytest-cov *
+- pytest-randomly *
+- pytest-recording *
+- pytest-xdist *
 - pip
 - pip:
   - -e .

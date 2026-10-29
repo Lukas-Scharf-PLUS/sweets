@@ -358,11 +358,12 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/yamale-5.3.0-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/zipp-3.23.0-pyhd8ed1ab_0.conda
       - pypi: ./
-      - pypi: git+https://github.com/scottstanie/COMPASS.git?branch=develop-scott#18297ff1158720b44280b87a7c3ce9cd17d75a38
+      - pypi: git+https://github.com/isce-framework/dolphin.git?rev=1bd5ed6b59af18b842ac82ce3783ed5c94d1a63f#1bd5ed6b59af18b842ac82ce3783ed5c94d1a63f
+      - pypi: git+https://github.com/scottstanie/COMPASS.git?rev=18297ff1158720b44280b87a7c3ce9cd17d75a38#18297ff1158720b44280b87a7c3ce9cd17d75a38
       - pypi: git+https://github.com/scottstanie/burst2safe.git?rev=d45c4cf3b59815f7dbd130749318b5c561e43908#d45c4cf3b59815f7dbd130749318b5c561e43908
       - pypi: git+https://github.com/scottstanie/opera-utils.git?rev=97e3f15898cb0591de0d3f2ec296ac8760a53d16#97e3f15898cb0591de0d3f2ec296ac8760a53d16
-      - pypi: git+https://github.com/scottstanie/s1-reader.git?branch=develop-scott#b3fb4a9d7624363d7e36021bc3e177d10ba6ed92
-      - pypi: git+https://github.com/scottstanie/spurt.git?branch=develop-scott#5adae527a49657a78d470868a6fb3999559f943c
+      - pypi: git+https://github.com/scottstanie/s1-reader.git?rev=b3fb4a9d7624363d7e36021bc3e177d10ba6ed92#b3fb4a9d7624363d7e36021bc3e177d10ba6ed92
+      - pypi: git+https://github.com/scottstanie/spurt.git?rev=e0531bc20c566e57a3cbadfd1d9021cd52ca3ac0#e0531bc20c566e57a3cbadfd1d9021cd52ca3ac0
       - pypi: https://files.pythonhosted.org/packages/0d/50/e37d02e250f5feb755112ec95b1c012a36d48a99209277267037d100f630/jaxlib-0.7.1-cp312-cp312-manylinux_2_27_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/10/a1/510b0a7fadc6f43a6ce50152e69dbd86415240835868bb0bd9b5b88b1e06/aioitertools-0.13.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/14/2f/967ba146e6d58cf6a652da73885f52fc68001525b4197effc174321d70b4/jmespath-1.1.0-py3-none-any.whl
@@ -372,7 +373,6 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/2a/2d/d4bf65e47cea8ff2c794a600c4fd1273a7902f268757c531e0ee9f18aa58/pooch-1.9.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/3a/cb/28ce52eb94390dda42599c98ea0204d74799e4d8047a0eb559b6fd648056/ml_dtypes-0.5.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/56/f3/b594fe851ad520a07127a9680bbf9732c74f8d4e6b6dc5a2cdd196bf5974/snaphu-0.4.1-cp312-cp312-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-      - pypi: https://files.pythonhosted.org/packages/58/52/1fb238ce004c7af0e684aedb3678407e71d3bc097766d6757312aee6e450/dolphin-0.42.8-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/6a/52/5ccdc01f7a8a61357d15a66b5d8a6580aa8529cb33f32e6cbb71c52622c5/s3fs-2026.3.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/6a/bd/d91c5e39f490a49df14320f4e8c80161cfcce09f1e2cde1edd16a551abb3/frozenlist-1.8.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/71/43/1947f06babed6b3f1d7f38b0c767f52df66bfb2bc10b468c4a7de9eceff2/aiohappyeyeballs-2.7.1-py3-none-any.whl
@@ -655,11 +655,12 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/zstandard-0.23.0-py312hea69d52_1.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/zstd-1.5.7-h6491c7d_2.conda
       - pypi: ./
-      - pypi: git+https://github.com/scottstanie/COMPASS.git?branch=develop-scott#18297ff1158720b44280b87a7c3ce9cd17d75a38
+      - pypi: git+https://github.com/isce-framework/dolphin.git?rev=1bd5ed6b59af18b842ac82ce3783ed5c94d1a63f#1bd5ed6b59af18b842ac82ce3783ed5c94d1a63f
+      - pypi: git+https://github.com/scottstanie/COMPASS.git?rev=18297ff1158720b44280b87a7c3ce9cd17d75a38#18297ff1158720b44280b87a7c3ce9cd17d75a38
       - pypi: git+https://github.com/scottstanie/burst2safe.git?rev=d45c4cf3b59815f7dbd130749318b5c561e43908#d45c4cf3b59815f7dbd130749318b5c561e43908
       - pypi: git+https://github.com/scottstanie/opera-utils.git?rev=97e3f15898cb0591de0d3f2ec296ac8760a53d16#97e3f15898cb0591de0d3f2ec296ac8760a53d16
-      - pypi: git+https://github.com/scottstanie/s1-reader.git?branch=develop-scott#b3fb4a9d7624363d7e36021bc3e177d10ba6ed92
-      - pypi: git+https://github.com/scottstanie/spurt.git?branch=develop-scott#5adae527a49657a78d470868a6fb3999559f943c
+      - pypi: git+https://github.com/scottstanie/s1-reader.git?rev=b3fb4a9d7624363d7e36021bc3e177d10ba6ed92#b3fb4a9d7624363d7e36021bc3e177d10ba6ed92
+      - pypi: git+https://github.com/scottstanie/spurt.git?rev=e0531bc20c566e57a3cbadfd1d9021cd52ca3ac0#e0531bc20c566e57a3cbadfd1d9021cd52ca3ac0
       - pypi: https://files.pythonhosted.org/packages/10/a1/510b0a7fadc6f43a6ce50152e69dbd86415240835868bb0bd9b5b88b1e06/aioitertools-0.13.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/14/2f/967ba146e6d58cf6a652da73885f52fc68001525b4197effc174321d70b4/jmespath-1.1.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/16/e1/3079a9ff9b8e11b846c6ac5c8b5bfb7ff225eee721825310c91b3b50304f/tqdm-4.67.3-py3-none-any.whl
@@ -670,7 +671,6 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/2b/94/5c8a2b50a496b11dd519f4a24cb5496cf125681dd99e94c604ccdea9419a/frozenlist-1.8.0-cp312-cp312-macosx_11_0_arm64.whl
       - pypi: https://files.pythonhosted.org/packages/31/ad/964ee5341767dd9e2f13e76f0a36d45aa8d81ad776c80bdd6dedc8f2f462/ortools-9.14.6206-cp312-cp312-macosx_11_0_arm64.whl
       - pypi: https://files.pythonhosted.org/packages/3a/1d/c8c40e611e5094330284b1aea8a4b02ca0858f8458614fa35754cab42b9c/aiohttp-3.12.15-cp312-cp312-macosx_11_0_arm64.whl
-      - pypi: https://files.pythonhosted.org/packages/58/52/1fb238ce004c7af0e684aedb3678407e71d3bc097766d6757312aee6e450/dolphin-0.42.8-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/6a/52/5ccdc01f7a8a61357d15a66b5d8a6580aa8529cb33f32e6cbb71c52622c5/s3fs-2026.3.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/6a/c9/b9689a2a250264a84e66c46d8862ba788ee7a641cdca39bccf64f59284b7/protobuf-6.31.1-cp39-abi3-macosx_10_9_universal2.whl
       - pypi: https://files.pythonhosted.org/packages/6c/2f/8bd31a1ea43c01ac215283d83aa5f8d5acbe7a36c85b82f1757bfe9ccb31/numba-0.65.0-cp312-cp312-macosx_12_0_arm64.whl
@@ -1031,11 +1031,12 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/yamale-6.1.0-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/zipp-3.23.0-pyhcf101f3_1.conda
       - pypi: ./
-      - pypi: git+https://github.com/scottstanie/COMPASS.git?branch=develop-scott#18297ff1158720b44280b87a7c3ce9cd17d75a38
+      - pypi: git+https://github.com/isce-framework/dolphin.git?rev=1bd5ed6b59af18b842ac82ce3783ed5c94d1a63f#1bd5ed6b59af18b842ac82ce3783ed5c94d1a63f
+      - pypi: git+https://github.com/scottstanie/COMPASS.git?rev=18297ff1158720b44280b87a7c3ce9cd17d75a38#18297ff1158720b44280b87a7c3ce9cd17d75a38
       - pypi: git+https://github.com/scottstanie/burst2safe.git?rev=d45c4cf3b59815f7dbd130749318b5c561e43908#d45c4cf3b59815f7dbd130749318b5c561e43908
       - pypi: git+https://github.com/scottstanie/opera-utils.git?rev=97e3f15898cb0591de0d3f2ec296ac8760a53d16#97e3f15898cb0591de0d3f2ec296ac8760a53d16
-      - pypi: git+https://github.com/scottstanie/s1-reader.git?branch=develop-scott#b3fb4a9d7624363d7e36021bc3e177d10ba6ed92
-      - pypi: git+https://github.com/scottstanie/spurt.git?branch=develop-scott#5adae527a49657a78d470868a6fb3999559f943c
+      - pypi: git+https://github.com/scottstanie/s1-reader.git?rev=b3fb4a9d7624363d7e36021bc3e177d10ba6ed92#b3fb4a9d7624363d7e36021bc3e177d10ba6ed92
+      - pypi: git+https://github.com/scottstanie/spurt.git?rev=e0531bc20c566e57a3cbadfd1d9021cd52ca3ac0#e0531bc20c566e57a3cbadfd1d9021cd52ca3ac0
       - pypi: https://files.pythonhosted.org/packages/10/a1/510b0a7fadc6f43a6ce50152e69dbd86415240835868bb0bd9b5b88b1e06/aioitertools-0.13.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/14/2f/967ba146e6d58cf6a652da73885f52fc68001525b4197effc174321d70b4/jmespath-1.1.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/16/92/d1e32e3e0d894fe00b15ce28ad4944ab692713f2e7f0a99787405e43533a/protobuf-6.33.6-cp39-abi3-manylinux2014_x86_64.whl
@@ -1048,7 +1049,6 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/3a/cb/28ce52eb94390dda42599c98ea0204d74799e4d8047a0eb559b6fd648056/ml_dtypes-0.5.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/49/0f/6d6d722102a0ceccf4a5038e2bc91d023da84a6dba98482a4634df3d27ab/ortools-9.15.6755-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/56/f3/b594fe851ad520a07127a9680bbf9732c74f8d4e6b6dc5a2cdd196bf5974/snaphu-0.4.1-cp312-cp312-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-      - pypi: https://files.pythonhosted.org/packages/58/52/1fb238ce004c7af0e684aedb3678407e71d3bc097766d6757312aee6e450/dolphin-0.42.8-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/6a/52/5ccdc01f7a8a61357d15a66b5d8a6580aa8529cb33f32e6cbb71c52622c5/s3fs-2026.3.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/6a/bd/d91c5e39f490a49df14320f4e8c80161cfcce09f1e2cde1edd16a551abb3/frozenlist-1.8.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/71/43/1947f06babed6b3f1d7f38b0c767f52df66bfb2bc10b468c4a7de9eceff2/aiohappyeyeballs-2.7.1-py3-none-any.whl
@@ -1337,11 +1337,12 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/zlib-ng-2.3.3-hed4e4f5_1.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/zstd-1.5.7-hbf9d68e_6.conda
       - pypi: ./
-      - pypi: git+https://github.com/scottstanie/COMPASS.git?branch=develop-scott#18297ff1158720b44280b87a7c3ce9cd17d75a38
+      - pypi: git+https://github.com/isce-framework/dolphin.git?rev=1bd5ed6b59af18b842ac82ce3783ed5c94d1a63f#1bd5ed6b59af18b842ac82ce3783ed5c94d1a63f
+      - pypi: git+https://github.com/scottstanie/COMPASS.git?rev=18297ff1158720b44280b87a7c3ce9cd17d75a38#18297ff1158720b44280b87a7c3ce9cd17d75a38
       - pypi: git+https://github.com/scottstanie/burst2safe.git?rev=d45c4cf3b59815f7dbd130749318b5c561e43908#d45c4cf3b59815f7dbd130749318b5c561e43908
       - pypi: git+https://github.com/scottstanie/opera-utils.git?rev=97e3f15898cb0591de0d3f2ec296ac8760a53d16#97e3f15898cb0591de0d3f2ec296ac8760a53d16
-      - pypi: git+https://github.com/scottstanie/s1-reader.git?branch=develop-scott#b3fb4a9d7624363d7e36021bc3e177d10ba6ed92
-      - pypi: git+https://github.com/scottstanie/spurt.git?branch=develop-scott#5adae527a49657a78d470868a6fb3999559f943c
+      - pypi: git+https://github.com/scottstanie/s1-reader.git?rev=b3fb4a9d7624363d7e36021bc3e177d10ba6ed92#b3fb4a9d7624363d7e36021bc3e177d10ba6ed92
+      - pypi: git+https://github.com/scottstanie/spurt.git?rev=e0531bc20c566e57a3cbadfd1d9021cd52ca3ac0#e0531bc20c566e57a3cbadfd1d9021cd52ca3ac0
       - pypi: https://files.pythonhosted.org/packages/10/a1/510b0a7fadc6f43a6ce50152e69dbd86415240835868bb0bd9b5b88b1e06/aioitertools-0.13.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/13/54/ed73ec00369fb6d6c71049d62e4b7c87c918b61f86ddd55a11c20ada395e/ortools-9.15.6755-cp314-cp314-macosx_11_0_arm64.whl
       - pypi: https://files.pythonhosted.org/packages/14/2f/967ba146e6d58cf6a652da73885f52fc68001525b4197effc174321d70b4/jmespath-1.1.0-py3-none-any.whl
@@ -1354,7 +1355,6 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/2a/2d/d4bf65e47cea8ff2c794a600c4fd1273a7902f268757c531e0ee9f18aa58/pooch-1.9.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/3b/b9/50d7a530c3dc97f61d30fefb31aa50f4710954de12e0cebcae8c9fc8d301/snaphu-0.4.1.tar.gz
       - pypi: https://files.pythonhosted.org/packages/56/a4/90edb01e9176053578e343d7a7276bc28356741ee67059aed8ed2c1a4e59/numba-0.65.0-cp314-cp314-macosx_12_0_arm64.whl
-      - pypi: https://files.pythonhosted.org/packages/58/52/1fb238ce004c7af0e684aedb3678407e71d3bc097766d6757312aee6e450/dolphin-0.42.8-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/5c/01/a3c3ed5cd186f39e7880f8303cc51385a198a81469d53d0fdecf1f64d929/protobuf-6.33.6-cp39-abi3-macosx_10_9_universal2.whl
       - pypi: https://files.pythonhosted.org/packages/6a/52/5ccdc01f7a8a61357d15a66b5d8a6580aa8529cb33f32e6cbb71c52622c5/s3fs-2026.3.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/71/43/1947f06babed6b3f1d7f38b0c767f52df66bfb2bc10b468c4a7de9eceff2/aiohappyeyeballs-2.7.1-py3-none-any.whl
@@ -1603,11 +1603,12 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/yamale-5.3.0-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/zipp-3.23.0-pyhd8ed1ab_0.conda
       - pypi: ./
-      - pypi: git+https://github.com/scottstanie/COMPASS.git?branch=develop-scott#18297ff1158720b44280b87a7c3ce9cd17d75a38
+      - pypi: git+https://github.com/isce-framework/dolphin.git?rev=1bd5ed6b59af18b842ac82ce3783ed5c94d1a63f#1bd5ed6b59af18b842ac82ce3783ed5c94d1a63f
+      - pypi: git+https://github.com/scottstanie/COMPASS.git?rev=18297ff1158720b44280b87a7c3ce9cd17d75a38#18297ff1158720b44280b87a7c3ce9cd17d75a38
       - pypi: git+https://github.com/scottstanie/burst2safe.git?rev=d45c4cf3b59815f7dbd130749318b5c561e43908#d45c4cf3b59815f7dbd130749318b5c561e43908
       - pypi: git+https://github.com/scottstanie/opera-utils.git?rev=97e3f15898cb0591de0d3f2ec296ac8760a53d16#97e3f15898cb0591de0d3f2ec296ac8760a53d16
-      - pypi: git+https://github.com/scottstanie/s1-reader.git?branch=develop-scott#b3fb4a9d7624363d7e36021bc3e177d10ba6ed92
-      - pypi: git+https://github.com/scottstanie/spurt.git?branch=develop-scott#5adae527a49657a78d470868a6fb3999559f943c
+      - pypi: git+https://github.com/scottstanie/s1-reader.git?rev=b3fb4a9d7624363d7e36021bc3e177d10ba6ed92#b3fb4a9d7624363d7e36021bc3e177d10ba6ed92
+      - pypi: git+https://github.com/scottstanie/spurt.git?rev=e0531bc20c566e57a3cbadfd1d9021cd52ca3ac0#e0531bc20c566e57a3cbadfd1d9021cd52ca3ac0
       - pypi: https://files.pythonhosted.org/packages/0d/50/e37d02e250f5feb755112ec95b1c012a36d48a99209277267037d100f630/jaxlib-0.7.1-cp312-cp312-manylinux_2_27_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/10/a1/510b0a7fadc6f43a6ce50152e69dbd86415240835868bb0bd9b5b88b1e06/aioitertools-0.13.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/14/2f/967ba146e6d58cf6a652da73885f52fc68001525b4197effc174321d70b4/jmespath-1.1.0-py3-none-any.whl
@@ -1617,7 +1618,6 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/2a/2d/d4bf65e47cea8ff2c794a600c4fd1273a7902f268757c531e0ee9f18aa58/pooch-1.9.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/3a/cb/28ce52eb94390dda42599c98ea0204d74799e4d8047a0eb559b6fd648056/ml_dtypes-0.5.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/56/f3/b594fe851ad520a07127a9680bbf9732c74f8d4e6b6dc5a2cdd196bf5974/snaphu-0.4.1-cp312-cp312-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-      - pypi: https://files.pythonhosted.org/packages/58/52/1fb238ce004c7af0e684aedb3678407e71d3bc097766d6757312aee6e450/dolphin-0.42.8-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/6a/52/5ccdc01f7a8a61357d15a66b5d8a6580aa8529cb33f32e6cbb71c52622c5/s3fs-2026.3.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/6a/bd/d91c5e39f490a49df14320f4e8c80161cfcce09f1e2cde1edd16a551abb3/frozenlist-1.8.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/71/43/1947f06babed6b3f1d7f38b0c767f52df66bfb2bc10b468c4a7de9eceff2/aiohappyeyeballs-2.7.1-py3-none-any.whl
@@ -1852,11 +1852,12 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/zstandard-0.23.0-py312hea69d52_1.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/zstd-1.5.7-h6491c7d_2.conda
       - pypi: ./
-      - pypi: git+https://github.com/scottstanie/COMPASS.git?branch=develop-scott#18297ff1158720b44280b87a7c3ce9cd17d75a38
+      - pypi: git+https://github.com/isce-framework/dolphin.git?rev=1bd5ed6b59af18b842ac82ce3783ed5c94d1a63f#1bd5ed6b59af18b842ac82ce3783ed5c94d1a63f
+      - pypi: git+https://github.com/scottstanie/COMPASS.git?rev=18297ff1158720b44280b87a7c3ce9cd17d75a38#18297ff1158720b44280b87a7c3ce9cd17d75a38
       - pypi: git+https://github.com/scottstanie/burst2safe.git?rev=d45c4cf3b59815f7dbd130749318b5c561e43908#d45c4cf3b59815f7dbd130749318b5c561e43908
       - pypi: git+https://github.com/scottstanie/opera-utils.git?rev=97e3f15898cb0591de0d3f2ec296ac8760a53d16#97e3f15898cb0591de0d3f2ec296ac8760a53d16
-      - pypi: git+https://github.com/scottstanie/s1-reader.git?branch=develop-scott#b3fb4a9d7624363d7e36021bc3e177d10ba6ed92
-      - pypi: git+https://github.com/scottstanie/spurt.git?branch=develop-scott#5adae527a49657a78d470868a6fb3999559f943c
+      - pypi: git+https://github.com/scottstanie/s1-reader.git?rev=b3fb4a9d7624363d7e36021bc3e177d10ba6ed92#b3fb4a9d7624363d7e36021bc3e177d10ba6ed92
+      - pypi: git+https://github.com/scottstanie/spurt.git?rev=e0531bc20c566e57a3cbadfd1d9021cd52ca3ac0#e0531bc20c566e57a3cbadfd1d9021cd52ca3ac0
       - pypi: https://files.pythonhosted.org/packages/10/a1/510b0a7fadc6f43a6ce50152e69dbd86415240835868bb0bd9b5b88b1e06/aioitertools-0.13.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/14/2f/967ba146e6d58cf6a652da73885f52fc68001525b4197effc174321d70b4/jmespath-1.1.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/16/e1/3079a9ff9b8e11b846c6ac5c8b5bfb7ff225eee721825310c91b3b50304f/tqdm-4.67.3-py3-none-any.whl
@@ -1867,7 +1868,6 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/2b/94/5c8a2b50a496b11dd519f4a24cb5496cf125681dd99e94c604ccdea9419a/frozenlist-1.8.0-cp312-cp312-macosx_11_0_arm64.whl
       - pypi: https://files.pythonhosted.org/packages/31/ad/964ee5341767dd9e2f13e76f0a36d45aa8d81ad776c80bdd6dedc8f2f462/ortools-9.14.6206-cp312-cp312-macosx_11_0_arm64.whl
       - pypi: https://files.pythonhosted.org/packages/3a/1d/c8c40e611e5094330284b1aea8a4b02ca0858f8458614fa35754cab42b9c/aiohttp-3.12.15-cp312-cp312-macosx_11_0_arm64.whl
-      - pypi: https://files.pythonhosted.org/packages/58/52/1fb238ce004c7af0e684aedb3678407e71d3bc097766d6757312aee6e450/dolphin-0.42.8-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/6a/52/5ccdc01f7a8a61357d15a66b5d8a6580aa8529cb33f32e6cbb71c52622c5/s3fs-2026.3.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/6a/c9/b9689a2a250264a84e66c46d8862ba788ee7a641cdca39bccf64f59284b7/protobuf-6.31.1-cp39-abi3-macosx_10_9_universal2.whl
       - pypi: https://files.pythonhosted.org/packages/6c/2f/8bd31a1ea43c01ac215283d83aa5f8d5acbe7a36c85b82f1757bfe9ccb31/numba-0.65.0-cp312-cp312-macosx_12_0_arm64.whl
@@ -2195,11 +2195,12 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/yamale-5.3.0-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/zipp-3.23.0-pyhd8ed1ab_0.conda
       - pypi: ./
-      - pypi: git+https://github.com/scottstanie/COMPASS.git?branch=develop-scott#18297ff1158720b44280b87a7c3ce9cd17d75a38
+      - pypi: git+https://github.com/isce-framework/dolphin.git?rev=1bd5ed6b59af18b842ac82ce3783ed5c94d1a63f#1bd5ed6b59af18b842ac82ce3783ed5c94d1a63f
+      - pypi: git+https://github.com/scottstanie/COMPASS.git?rev=18297ff1158720b44280b87a7c3ce9cd17d75a38#18297ff1158720b44280b87a7c3ce9cd17d75a38
       - pypi: git+https://github.com/scottstanie/burst2safe.git?rev=d45c4cf3b59815f7dbd130749318b5c561e43908#d45c4cf3b59815f7dbd130749318b5c561e43908
       - pypi: git+https://github.com/scottstanie/opera-utils.git?rev=97e3f15898cb0591de0d3f2ec296ac8760a53d16#97e3f15898cb0591de0d3f2ec296ac8760a53d16
-      - pypi: git+https://github.com/scottstanie/s1-reader.git?branch=develop-scott#b3fb4a9d7624363d7e36021bc3e177d10ba6ed92
-      - pypi: git+https://github.com/scottstanie/spurt.git?branch=develop-scott#5adae527a49657a78d470868a6fb3999559f943c
+      - pypi: git+https://github.com/scottstanie/s1-reader.git?rev=b3fb4a9d7624363d7e36021bc3e177d10ba6ed92#b3fb4a9d7624363d7e36021bc3e177d10ba6ed92
+      - pypi: git+https://github.com/scottstanie/spurt.git?rev=e0531bc20c566e57a3cbadfd1d9021cd52ca3ac0#e0531bc20c566e57a3cbadfd1d9021cd52ca3ac0
       - pypi: https://files.pythonhosted.org/packages/0d/50/e37d02e250f5feb755112ec95b1c012a36d48a99209277267037d100f630/jaxlib-0.7.1-cp312-cp312-manylinux_2_27_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/10/a1/510b0a7fadc6f43a6ce50152e69dbd86415240835868bb0bd9b5b88b1e06/aioitertools-0.13.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/14/2f/967ba146e6d58cf6a652da73885f52fc68001525b4197effc174321d70b4/jmespath-1.1.0-py3-none-any.whl
@@ -2209,7 +2210,6 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/2a/2d/d4bf65e47cea8ff2c794a600c4fd1273a7902f268757c531e0ee9f18aa58/pooch-1.9.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/3a/cb/28ce52eb94390dda42599c98ea0204d74799e4d8047a0eb559b6fd648056/ml_dtypes-0.5.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/56/f3/b594fe851ad520a07127a9680bbf9732c74f8d4e6b6dc5a2cdd196bf5974/snaphu-0.4.1-cp312-cp312-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-      - pypi: https://files.pythonhosted.org/packages/58/52/1fb238ce004c7af0e684aedb3678407e71d3bc097766d6757312aee6e450/dolphin-0.42.8-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/6a/52/5ccdc01f7a8a61357d15a66b5d8a6580aa8529cb33f32e6cbb71c52622c5/s3fs-2026.3.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/6a/bd/d91c5e39f490a49df14320f4e8c80161cfcce09f1e2cde1edd16a551abb3/frozenlist-1.8.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/71/43/1947f06babed6b3f1d7f38b0c767f52df66bfb2bc10b468c4a7de9eceff2/aiohappyeyeballs-2.7.1-py3-none-any.whl
@@ -2467,11 +2467,12 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/zstandard-0.23.0-py312hea69d52_1.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/zstd-1.5.7-h6491c7d_2.conda
       - pypi: ./
-      - pypi: git+https://github.com/scottstanie/COMPASS.git?branch=develop-scott#18297ff1158720b44280b87a7c3ce9cd17d75a38
+      - pypi: git+https://github.com/isce-framework/dolphin.git?rev=1bd5ed6b59af18b842ac82ce3783ed5c94d1a63f#1bd5ed6b59af18b842ac82ce3783ed5c94d1a63f
+      - pypi: git+https://github.com/scottstanie/COMPASS.git?rev=18297ff1158720b44280b87a7c3ce9cd17d75a38#18297ff1158720b44280b87a7c3ce9cd17d75a38
       - pypi: git+https://github.com/scottstanie/burst2safe.git?rev=d45c4cf3b59815f7dbd130749318b5c561e43908#d45c4cf3b59815f7dbd130749318b5c561e43908
       - pypi: git+https://github.com/scottstanie/opera-utils.git?rev=97e3f15898cb0591de0d3f2ec296ac8760a53d16#97e3f15898cb0591de0d3f2ec296ac8760a53d16
-      - pypi: git+https://github.com/scottstanie/s1-reader.git?branch=develop-scott#b3fb4a9d7624363d7e36021bc3e177d10ba6ed92
-      - pypi: git+https://github.com/scottstanie/spurt.git?branch=develop-scott#5adae527a49657a78d470868a6fb3999559f943c
+      - pypi: git+https://github.com/scottstanie/s1-reader.git?rev=b3fb4a9d7624363d7e36021bc3e177d10ba6ed92#b3fb4a9d7624363d7e36021bc3e177d10ba6ed92
+      - pypi: git+https://github.com/scottstanie/spurt.git?rev=e0531bc20c566e57a3cbadfd1d9021cd52ca3ac0#e0531bc20c566e57a3cbadfd1d9021cd52ca3ac0
       - pypi: https://files.pythonhosted.org/packages/10/a1/510b0a7fadc6f43a6ce50152e69dbd86415240835868bb0bd9b5b88b1e06/aioitertools-0.13.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/14/2f/967ba146e6d58cf6a652da73885f52fc68001525b4197effc174321d70b4/jmespath-1.1.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/16/e1/3079a9ff9b8e11b846c6ac5c8b5bfb7ff225eee721825310c91b3b50304f/tqdm-4.67.3-py3-none-any.whl
@@ -2482,7 +2483,6 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/2b/94/5c8a2b50a496b11dd519f4a24cb5496cf125681dd99e94c604ccdea9419a/frozenlist-1.8.0-cp312-cp312-macosx_11_0_arm64.whl
       - pypi: https://files.pythonhosted.org/packages/31/ad/964ee5341767dd9e2f13e76f0a36d45aa8d81ad776c80bdd6dedc8f2f462/ortools-9.14.6206-cp312-cp312-macosx_11_0_arm64.whl
       - pypi: https://files.pythonhosted.org/packages/3a/1d/c8c40e611e5094330284b1aea8a4b02ca0858f8458614fa35754cab42b9c/aiohttp-3.12.15-cp312-cp312-macosx_11_0_arm64.whl
-      - pypi: https://files.pythonhosted.org/packages/58/52/1fb238ce004c7af0e684aedb3678407e71d3bc097766d6757312aee6e450/dolphin-0.42.8-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/6a/52/5ccdc01f7a8a61357d15a66b5d8a6580aa8529cb33f32e6cbb71c52622c5/s3fs-2026.3.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/6a/c9/b9689a2a250264a84e66c46d8862ba788ee7a641cdca39bccf64f59284b7/protobuf-6.31.1-cp39-abi3-macosx_10_9_universal2.whl
       - pypi: https://files.pythonhosted.org/packages/6c/2f/8bd31a1ea43c01ac215283d83aa5f8d5acbe7a36c85b82f1757bfe9ccb31/numba-0.65.0-cp312-cp312-macosx_12_0_arm64.whl
@@ -2835,11 +2835,12 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/yamale-5.3.0-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/zipp-3.23.0-pyhd8ed1ab_0.conda
       - pypi: ./
-      - pypi: git+https://github.com/scottstanie/COMPASS.git?branch=develop-scott#18297ff1158720b44280b87a7c3ce9cd17d75a38
+      - pypi: git+https://github.com/isce-framework/dolphin.git?rev=1bd5ed6b59af18b842ac82ce3783ed5c94d1a63f#1bd5ed6b59af18b842ac82ce3783ed5c94d1a63f
+      - pypi: git+https://github.com/scottstanie/COMPASS.git?rev=18297ff1158720b44280b87a7c3ce9cd17d75a38#18297ff1158720b44280b87a7c3ce9cd17d75a38
       - pypi: git+https://github.com/scottstanie/burst2safe.git?rev=d45c4cf3b59815f7dbd130749318b5c561e43908#d45c4cf3b59815f7dbd130749318b5c561e43908
       - pypi: git+https://github.com/scottstanie/opera-utils.git?rev=97e3f15898cb0591de0d3f2ec296ac8760a53d16#97e3f15898cb0591de0d3f2ec296ac8760a53d16
-      - pypi: git+https://github.com/scottstanie/s1-reader.git?branch=develop-scott#b3fb4a9d7624363d7e36021bc3e177d10ba6ed92
-      - pypi: git+https://github.com/scottstanie/spurt.git?branch=develop-scott#5adae527a49657a78d470868a6fb3999559f943c
+      - pypi: git+https://github.com/scottstanie/s1-reader.git?rev=b3fb4a9d7624363d7e36021bc3e177d10ba6ed92#b3fb4a9d7624363d7e36021bc3e177d10ba6ed92
+      - pypi: git+https://github.com/scottstanie/spurt.git?rev=e0531bc20c566e57a3cbadfd1d9021cd52ca3ac0#e0531bc20c566e57a3cbadfd1d9021cd52ca3ac0
       - pypi: https://files.pythonhosted.org/packages/0d/50/e37d02e250f5feb755112ec95b1c012a36d48a99209277267037d100f630/jaxlib-0.7.1-cp312-cp312-manylinux_2_27_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/10/a1/510b0a7fadc6f43a6ce50152e69dbd86415240835868bb0bd9b5b88b1e06/aioitertools-0.13.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/14/2f/967ba146e6d58cf6a652da73885f52fc68001525b4197effc174321d70b4/jmespath-1.1.0-py3-none-any.whl
@@ -2849,7 +2850,6 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/2a/2d/d4bf65e47cea8ff2c794a600c4fd1273a7902f268757c531e0ee9f18aa58/pooch-1.9.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/3a/cb/28ce52eb94390dda42599c98ea0204d74799e4d8047a0eb559b6fd648056/ml_dtypes-0.5.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/56/f3/b594fe851ad520a07127a9680bbf9732c74f8d4e6b6dc5a2cdd196bf5974/snaphu-0.4.1-cp312-cp312-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-      - pypi: https://files.pythonhosted.org/packages/58/52/1fb238ce004c7af0e684aedb3678407e71d3bc097766d6757312aee6e450/dolphin-0.42.8-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/6a/52/5ccdc01f7a8a61357d15a66b5d8a6580aa8529cb33f32e6cbb71c52622c5/s3fs-2026.3.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/6a/bd/d91c5e39f490a49df14320f4e8c80161cfcce09f1e2cde1edd16a551abb3/frozenlist-1.8.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/71/43/1947f06babed6b3f1d7f38b0c767f52df66bfb2bc10b468c4a7de9eceff2/aiohappyeyeballs-2.7.1-py3-none-any.whl
@@ -3132,11 +3132,12 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/zstandard-0.23.0-py312hea69d52_1.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/zstd-1.5.7-h6491c7d_2.conda
       - pypi: ./
-      - pypi: git+https://github.com/scottstanie/COMPASS.git?branch=develop-scott#18297ff1158720b44280b87a7c3ce9cd17d75a38
+      - pypi: git+https://github.com/isce-framework/dolphin.git?rev=1bd5ed6b59af18b842ac82ce3783ed5c94d1a63f#1bd5ed6b59af18b842ac82ce3783ed5c94d1a63f
+      - pypi: git+https://github.com/scottstanie/COMPASS.git?rev=18297ff1158720b44280b87a7c3ce9cd17d75a38#18297ff1158720b44280b87a7c3ce9cd17d75a38
       - pypi: git+https://github.com/scottstanie/burst2safe.git?rev=d45c4cf3b59815f7dbd130749318b5c561e43908#d45c4cf3b59815f7dbd130749318b5c561e43908
       - pypi: git+https://github.com/scottstanie/opera-utils.git?rev=97e3f15898cb0591de0d3f2ec296ac8760a53d16#97e3f15898cb0591de0d3f2ec296ac8760a53d16
-      - pypi: git+https://github.com/scottstanie/s1-reader.git?branch=develop-scott#b3fb4a9d7624363d7e36021bc3e177d10ba6ed92
-      - pypi: git+https://github.com/scottstanie/spurt.git?branch=develop-scott#5adae527a49657a78d470868a6fb3999559f943c
+      - pypi: git+https://github.com/scottstanie/s1-reader.git?rev=b3fb4a9d7624363d7e36021bc3e177d10ba6ed92#b3fb4a9d7624363d7e36021bc3e177d10ba6ed92
+      - pypi: git+https://github.com/scottstanie/spurt.git?rev=e0531bc20c566e57a3cbadfd1d9021cd52ca3ac0#e0531bc20c566e57a3cbadfd1d9021cd52ca3ac0
       - pypi: https://files.pythonhosted.org/packages/10/a1/510b0a7fadc6f43a6ce50152e69dbd86415240835868bb0bd9b5b88b1e06/aioitertools-0.13.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/14/2f/967ba146e6d58cf6a652da73885f52fc68001525b4197effc174321d70b4/jmespath-1.1.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/16/e1/3079a9ff9b8e11b846c6ac5c8b5bfb7ff225eee721825310c91b3b50304f/tqdm-4.67.3-py3-none-any.whl
@@ -3147,7 +3148,6 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/2b/94/5c8a2b50a496b11dd519f4a24cb5496cf125681dd99e94c604ccdea9419a/frozenlist-1.8.0-cp312-cp312-macosx_11_0_arm64.whl
       - pypi: https://files.pythonhosted.org/packages/31/ad/964ee5341767dd9e2f13e76f0a36d45aa8d81ad776c80bdd6dedc8f2f462/ortools-9.14.6206-cp312-cp312-macosx_11_0_arm64.whl
       - pypi: https://files.pythonhosted.org/packages/3a/1d/c8c40e611e5094330284b1aea8a4b02ca0858f8458614fa35754cab42b9c/aiohttp-3.12.15-cp312-cp312-macosx_11_0_arm64.whl
-      - pypi: https://files.pythonhosted.org/packages/58/52/1fb238ce004c7af0e684aedb3678407e71d3bc097766d6757312aee6e450/dolphin-0.42.8-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/6a/52/5ccdc01f7a8a61357d15a66b5d8a6580aa8529cb33f32e6cbb71c52622c5/s3fs-2026.3.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/6a/c9/b9689a2a250264a84e66c46d8862ba788ee7a641cdca39bccf64f59284b7/protobuf-6.31.1-cp39-abi3-macosx_10_9_universal2.whl
       - pypi: https://files.pythonhosted.org/packages/6c/2f/8bd31a1ea43c01ac215283d83aa5f8d5acbe7a36c85b82f1757bfe9ccb31/numba-0.65.0-cp312-cp312-macosx_12_0_arm64.whl
@@ -15392,7 +15392,7 @@ packages:
   requires_dist:
   - asf-search
   - burst2safe
-  - dolphin>=0.42.8
+  - dolphin @ git+https://github.com/isce-framework/dolphin.git@1bd5ed6b59af18b842ac82ce3783ed5c94d1a63f
   - h5py
   - loguru
   - numpy
@@ -15416,7 +15416,49 @@ packages:
   - websockets ; extra == 'web'
   - titiler-core ; extra == 'web'
   requires_python: '>=3.11'
-- pypi: git+https://github.com/scottstanie/COMPASS.git?branch=develop-scott#18297ff1158720b44280b87a7c3ce9cd17d75a38
+- pypi: git+https://github.com/isce-framework/dolphin.git?rev=1bd5ed6b59af18b842ac82ce3783ed5c94d1a63f#1bd5ed6b59af18b842ac82ce3783ed5c94d1a63f
+  name: dolphin
+  version: 0.42.9.post1.dev1+g1bd5ed6b5
+  requires_dist:
+  - h5py>=3.6
+  - jax>=0.4.19
+  - numba>=0.56
+  - numpy>=1.23,<2.5
+  - opera-utils>=0.25.9
+  - pydantic>=2.1
+  - pyproj>=3.3
+  - rasterio>=1.3
+  - ruamel-yaml>=0.15
+  - scipy>=1.9
+  - snaphu>=0.4.1
+  - threadpoolctl>=3.0
+  - tqdm>=4.60
+  - tyro>=0.9.20
+  - markdown ; extra == 'docs'
+  - mkdocs ; extra == 'docs'
+  - mkdocs-gen-files ; extra == 'docs'
+  - mkdocs-jupyter==0.25.0 ; extra == 'docs'
+  - mkdocs-literate-nav ; extra == 'docs'
+  - mkdocs-material ; extra == 'docs'
+  - mkdocs-section-index ; extra == 'docs'
+  - mkdocstrings[python] ; extra == 'docs'
+  - pybtex ; extra == 'docs'
+  - pymdown-extensions ; extra == 'docs'
+  - asv ; extra == 'test'
+  - black ; extra == 'test'
+  - boto3 ; extra == 'test'
+  - moto[s3,server] ; extra == 'test'
+  - pooch ; extra == 'test'
+  - pre-commit ; extra == 'test'
+  - pytest ; extra == 'test'
+  - pytest-cov ; extra == 'test'
+  - pytest-randomly ; extra == 'test'
+  - pytest-xdist ; extra == 'test'
+  - shapely ; extra == 'test'
+  - snaphu>=0.4.1 ; extra == 'test'
+  - xarray ; extra == 'test'
+  requires_python: '>=3.10'
+- pypi: git+https://github.com/scottstanie/COMPASS.git?rev=18297ff1158720b44280b87a7c3ce9cd17d75a38#18297ff1158720b44280b87a7c3ce9cd17d75a38
   name: compass
   version: 0.5.6
   requires_dist:
@@ -15505,15 +15547,15 @@ packages:
   - pybtex ; extra == 'docs'
   - pymdown-extensions ; extra == 'docs'
   requires_python: '>=3.9'
-- pypi: git+https://github.com/scottstanie/s1-reader.git?branch=develop-scott#b3fb4a9d7624363d7e36021bc3e177d10ba6ed92
+- pypi: git+https://github.com/scottstanie/s1-reader.git?rev=b3fb4a9d7624363d7e36021bc3e177d10ba6ed92#b3fb4a9d7624363d7e36021bc3e177d10ba6ed92
   name: s1reader
   version: 0.2.5
   requires_dist:
   - setuptools
   requires_python: '>=3.8'
-- pypi: git+https://github.com/scottstanie/spurt.git?branch=develop-scott#5adae527a49657a78d470868a6fb3999559f943c
+- pypi: git+https://github.com/scottstanie/spurt.git?rev=e0531bc20c566e57a3cbadfd1d9021cd52ca3ac0#e0531bc20c566e57a3cbadfd1d9021cd52ca3ac0
   name: spurt
-  version: 0.1.dev186
+  version: 0.1.dev187
   requires_dist:
   - h5py>=3.6
   - numpy>=1.23
@@ -15754,49 +15796,6 @@ packages:
   - pytest>=6 ; extra == 'test'
   - pytest-cov>=3 ; extra == 'test'
   requires_python: '>=3.9'
-- pypi: https://files.pythonhosted.org/packages/58/52/1fb238ce004c7af0e684aedb3678407e71d3bc097766d6757312aee6e450/dolphin-0.42.8-py3-none-any.whl
-  name: dolphin
-  version: 0.42.8
-  sha256: baba3ab6cb310cf955eae72722254077c2584787234305016b5d4683c9544d9c
-  requires_dist:
-  - h5py>=3.6
-  - jax>=0.4.19
-  - numba>=0.56
-  - numpy>=1.23,<2.5
-  - opera-utils>=0.25.9
-  - pydantic>=2.1
-  - pyproj>=3.3
-  - rasterio>=1.3
-  - ruamel-yaml>=0.15
-  - scipy>=1.9
-  - snaphu>=0.4.1
-  - threadpoolctl>=3.0
-  - tqdm>=4.60
-  - tyro>=0.9.20
-  - markdown ; extra == 'docs'
-  - mkdocs ; extra == 'docs'
-  - mkdocs-gen-files ; extra == 'docs'
-  - mkdocs-jupyter==0.25.0 ; extra == 'docs'
-  - mkdocs-literate-nav ; extra == 'docs'
-  - mkdocs-material ; extra == 'docs'
-  - mkdocs-section-index ; extra == 'docs'
-  - mkdocstrings[python] ; extra == 'docs'
-  - pybtex ; extra == 'docs'
-  - pymdown-extensions ; extra == 'docs'
-  - asv ; extra == 'test'
-  - black ; extra == 'test'
-  - boto3 ; extra == 'test'
-  - moto[s3,server] ; extra == 'test'
-  - pooch ; extra == 'test'
-  - pre-commit ; extra == 'test'
-  - pytest ; extra == 'test'
-  - pytest-cov ; extra == 'test'
-  - pytest-randomly ; extra == 'test'
-  - pytest-xdist ; extra == 'test'
-  - shapely ; extra == 'test'
-  - snaphu>=0.4.1 ; extra == 'test'
-  - xarray ; extra == 'test'
-  requires_python: '>=3.10'
 - pypi: https://files.pythonhosted.org/packages/5c/01/a3c3ed5cd186f39e7880f8303cc51385a198a81469d53d0fdecf1f64d929/protobuf-6.33.6-cp39-abi3-macosx_10_9_universal2.whl
   name: protobuf
   version: 6.33.6
