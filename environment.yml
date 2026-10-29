@@ -42,6 +42,7 @@ dependencies:
 - pip
 - pip:
   - -e .
+  - dolphin @ git+https://github.com/isce-framework/dolphin.git@1bd5ed6b59af18b842ac82ce3783ed5c94d1a63f
   - burst2safe @ git+https://github.com/scottstanie/burst2safe.git@d45c4cf3b59815f7dbd130749318b5c561e43908
   - s1reader @ git+https://github.com/scottstanie/s1-reader.git@develop-scott
   - compass @ git+https://github.com/scottstanie/COMPASS.git@develop-scott

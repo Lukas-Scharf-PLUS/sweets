@@ -40,7 +40,7 @@ dynamic = ["version"]
 dependencies = [
   "asf_search",
   "burst2safe",
-  "dolphin>=0.42.8",
+  "dolphin @ git+https://github.com/isce-framework/dolphin.git@1bd5ed6b59af18b842ac82ce3783ed5c94d1a63f",
   "h5py",
   "loguru",
   "numpy",
@@ -97,6 +97,7 @@ BURST2SAFE_MAX_CONCURRENT = "6"
 # helpers, but its SCM-derived version is 0.25.8.post1.dev50.
 opera-utils = { git = "https://github.com/scottstanie/opera-utils.git", rev = "97e3f15898cb0591de0d3f2ec296ac8760a53d16" }
 aiohttp = ">=3.12.6,<3.13"
+dolphin = { git = "https://github.com/isce-framework/dolphin.git", rev = "1bd5ed6b59af18b842ac82ce3783ed5c94d1a63f" }
 
 [tool.pixi.pypi-dependencies]
 sweets = { path = ".", editable = true }
@@ -152,8 +153,9 @@ gdal = "*"
 libgdal-netcdf = "*"
 cmake = ">=3.25,<3.30"
 # Pure-python deps mirrored from [project.dependencies] so the env solves
-# fully through conda when possible. (dolphin is intentionally NOT here -
-# it is installed from PyPI at the version declared in project.dependencies.)
+# fully through conda when possible. Dolphin is intentionally NOT here;
+# it is installed from the pinned Git commit via the PyPI dependency
+# configuration above.
 asf_search = "*"
 h5py = ">=3.6"
 loguru = "*"
