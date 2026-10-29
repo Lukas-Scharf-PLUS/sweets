@@ -44,9 +44,9 @@ dependencies:
   - -e .
   - dolphin @ git+https://github.com/isce-framework/dolphin.git@1bd5ed6b59af18b842ac82ce3783ed5c94d1a63f
   - burst2safe @ git+https://github.com/scottstanie/burst2safe.git@d45c4cf3b59815f7dbd130749318b5c561e43908
-  - s1reader @ git+https://github.com/scottstanie/s1-reader.git@develop-scott
-  - compass @ git+https://github.com/scottstanie/COMPASS.git@develop-scott
+  - s1reader @ git+https://github.com/scottstanie/s1-reader.git@b3fb4a9d7624363d7e36021bc3e177d10ba6ed92
+  - compass @ git+https://github.com/scottstanie/COMPASS.git@18297ff1158720b44280b87a7c3ce9cd17d75a38
   - opera-utils[asf,disp,nisar,tropo] @ git+https://github.com/scottstanie/opera-utils.git@97e3f15898cb0591de0d3f2ec296ac8760a53d16
-  - spurt @ git+https://github.com/scottstanie/spurt.git@develop-scott
+  - spurt @ git+https://github.com/scottstanie/spurt.git@e0531bc20c566e57a3cbadfd1d9021cd52ca3ac0
   - whirlwind-insar==0.10.0
   - aiohttp >=3.12.6,<3.13

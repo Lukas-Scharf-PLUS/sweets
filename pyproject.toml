@@ -102,13 +102,14 @@ dolphin = { git = "https://github.com/isce-framework/dolphin.git", rev = "1bd5ed
 [tool.pixi.pypi-dependencies]
 sweets = { path = ".", editable = true }
 burst2safe = { git = "https://github.com/scottstanie/burst2safe.git", rev = "d45c4cf3b59815f7dbd130749318b5c561e43908" }
-# Use the recently-updated forks. Upstream isce-framework/s1-reader has a numpy 2
-# incompat (polyfit scalar regression, see sweets#132); upstream
-# opera-adt/COMPASS still uses np.string_ / np.unicode_ which were removed
-# in numpy 2. Both forks restore numpy-2 compatibility on develop-scott.
-s1reader = { git = "https://github.com/scottstanie/s1-reader.git", branch = "develop-scott" }
-compass = { git = "https://github.com/scottstanie/COMPASS.git", branch = "develop-scott" }
-# scottstanie/opera-utils@develop-scott carries the high-level
+# Use the scottstanie forks pinned to exact commits for reproducibility.
+# Upstream isce-framework/s1-reader has a numpy 2 incompat (polyfit scalar
+# regression, see sweets#132); upstream opera-adt/COMPASS still uses
+# np.string_ / np.unicode_, which were removed in numpy 2. These fork
+# revisions include the corresponding numpy-2 compatibility fixes.
+s1reader = { git = "https://github.com/scottstanie/s1-reader.git", rev = "b3fb4a9d7624363d7e36021bc3e177d10ba6ed92" }
+compass = { git = "https://github.com/scottstanie/COMPASS.git", rev = "18297ff1158720b44280b87a7c3ce9cd17d75a38" }
+# The pinned scottstanie/opera-utils revision carries the high-level
 # `create_tropo_corrections_for_stack` workflow + `search_tropo` CMR client
 # that the sweets tropo step builds on, plus the OPERA CSLC download
 # helpers used by the OperaCslcSearch source and the NISAR GSLC helpers
@@ -128,14 +129,14 @@ opera-utils = { git = "https://github.com/scottstanie/opera-utils.git", rev = "9
   "nisar",
   "tropo",
 ] }
-# scottstanie/spurt@develop-scott is significantly ahead of upstream
+# The pinned scottstanie/spurt revision is significantly ahead of upstream
 # isce-framework/spurt for temporal phase unwrapping - performance
 # fixes, macOS multiprocessing memory fix, richer logging, reader-
 # interface cleanups. dolphin only pulls `spurt` transitively, so
 # pinning the fork explicitly here gets everyone who sets
 # `dolphin.unwrap_method: spurt` in their sweets config onto the
 # supported version.
-spurt = { git = "https://github.com/scottstanie/spurt.git", branch = "develop-scott" }
+spurt = { git = "https://github.com/scottstanie/spurt.git", rev = "e0531bc20c566e57a3cbadfd1d9021cd52ca3ac0" }
 # Dolphin's optional Whirlwind backend is distributed as whirlwind-insar on PyPI.
 whirlwind-insar = "==0.10.0"
 
