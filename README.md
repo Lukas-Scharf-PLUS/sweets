@@ -103,8 +103,8 @@ sweets run pecos_demo/sweets_config.yaml
 Example config for Vienna:
 ```bash
 sweets config \
-  --start 2022-01-01 \
-  --end 2024-12-31 \
+  --start 2025-01-01 \
+  --end 2025-01-31 \
   --track 73 \
   --bbox \
     16.18099875016676 48.11744311620298 \

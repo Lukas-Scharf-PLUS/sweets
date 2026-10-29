@@ -17,7 +17,7 @@ dependencies:
 - asf_search *
 - h5py >=3.6
 - loguru *
-- numpy >=1.25
+- numpy >=1.25,<2.5
 - pandas *
 - pydantic >=2.1
 - pyproj >=3.2
